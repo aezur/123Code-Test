@@ -2,6 +2,7 @@ declare global {
   export interface Student {
     id: number;
     uid: string;
+    description: string;
     password: string;
     first_name: string;
     last_name: string;
