@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col justify-center bg-white">
+  <div class="flex flex-col justify-center">
     <div class="px-10 py-2" v-if="title" >
-      <h2 class="text-5xl font-bold">{{title}}</h2>
+      <h2 class="text-5xl font-extrabold">{{title}}</h2>
     </div>
     <div class="px-10 py-2">
       <slot></slot>
@@ -24,6 +24,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 h2 {
+  line-height: 79px;
   color: $brand;
 }
 </style>
