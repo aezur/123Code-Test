@@ -1,5 +1,5 @@
 <template>
-  <div v-if="student" class="grid grid-cols-2">
+  <div v-if="student" class="grid grid-cols-2 gap-y-2.5">
     <p class="text-4xl font-bold">Username</p>
     <p class="text-4xl">{{ student?.username }}</p>
 
