@@ -49,6 +49,7 @@ export default Vue.extend({
 img {
   width: 200px;
   height: 200px;
+  background-color: $brand;
 }
 h1 {
   color: $titleText;
