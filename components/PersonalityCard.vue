@@ -19,7 +19,9 @@
       </div>
     </panel>
 
-    <button id="random-student" @click="getRandomStudent">Random Student</button>
+    <app-button id="random-student" @click="getRandomStudent">
+      <span class="text-2xl text-bold">Random Student</span>
+    </app-button>
   </div>
 </template>
 
