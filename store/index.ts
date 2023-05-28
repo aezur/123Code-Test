@@ -26,9 +26,15 @@ export const actions = {
     return dispatch('fetchStudents');
   },
   async fetchStudents({ commit }: { commit: Commit }, count: number = 10) {
-    const response = await fetch(`https://random-data-api.com/api/v2/users?size=${count}`);
-    const data: Student[] = await response.json();
-    const students = data.map((student: Student) => ({ ...student, description: loremIpsum.generateParagraphs(1) }));
+    const usersResponse = await fetch(`https://random-data-api.com/api/v2/users?size=${count}`);
+    const students: Student[] = await usersResponse.json();
+    for (const student of students) {
+      student.description = loremIpsum.generateParagraphs(1);
+      const brandCount = Math.floor(Math.random() * 5) + 1;
+      const brandResponse = await fetch(`https://random-data-api.com/api/v2/appliances?size=${brandCount}`);
+      const brandData: Brand[] = await brandResponse.json();
+      student.brands = brandData;
+    }
     return commit('setStudents', students);
   }
 }

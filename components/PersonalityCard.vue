@@ -13,8 +13,8 @@
 
     <panel id="brands" title="Brands">
       <div id="pills" class="flex flex-row flex-wrap gap-4 whitespace-nowrap">
-        <pill v-for="brand in brands" :key="brand">
-          {{ brand }}
+        <pill v-for="brand in student?.brands" :key="brand.uid">
+          {{ brand.brand }}
         </pill>
       </div>
     </panel>
@@ -42,11 +42,6 @@ export default Vue.extend({
   mounted() {
     this.getRandomStudent()
   },
-  computed: {
-    brands(): string[] {
-      return ['Coke', 'Pepsi', 'Mountain Dew', 'Fanta', 'Sprite', 'Dr. Pepper'];
-    },
-  }
 })
 </script>
 
