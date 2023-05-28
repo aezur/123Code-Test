@@ -1,19 +1,25 @@
 <template>
   <div id="personality-card" class="flex flex-col justify-center bg-white">
 
-    <user-display :student="student" />
+    <user-display id="display" :student="student" />
 
     <div id="description">
-      <p class="text-4xl font-medium ">{{ student?.description }}</p>
+      <p class="text-4xl font-medium">{{ student?.description }}</p>
     </div>
 
-    <panel title="Details">
+    <panel id="details" title="Details">
       <user-details :student="student" />
     </panel>
 
-    <panel title="Brand"></panel>
+    <panel id="brands" title="Brands">
+      <div id="pills" class="flex flex-row flex-wrap gap-4 whitespace-nowrap">
+        <pill v-for="brand in brands" :key="brand">
+          {{ brand }}
+        </pill>
+      </div>
+    </panel>
 
-    <button @click="getRandomStudent">Random Student</button>
+    <button id="random-student" @click="getRandomStudent">Random Student</button>
   </div>
 </template>
 
@@ -34,6 +40,11 @@ export default Vue.extend({
   mounted() {
     this.getRandomStudent()
   },
+  computed: {
+    brands(): string[] {
+      return ['Coke', 'Pepsi', 'Mountain Dew', 'Fanta', 'Sprite', 'Dr. Pepper'];
+    },
+  }
 })
 </script>
 
@@ -43,12 +54,22 @@ export default Vue.extend({
   padding: 80px 50px;
   font-family: 'Catamaran', sans-serif;
   border-radius: 50px;
+  #display {
+    margin-bottom: 60px;
+  }
   #description {
+    margin-bottom: 90px;
     padding: 8px 40px;
     p {
       line-height: 59px;
       color: $bodyText;
     }
+  }
+  #details {
+    margin-bottom: 50px;
+  }
+  #brands {
+    margin-bottom: 60px;
   }
 }
 </style>
