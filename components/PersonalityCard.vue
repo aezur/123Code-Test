@@ -28,7 +28,6 @@ export default Vue.extend({
       this.student = this.$store.getters.getRandomStudent()
     },
   },
-
   mounted() {
     this.getRandomStudent()
   },
