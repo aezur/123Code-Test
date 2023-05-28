@@ -1,18 +1,20 @@
 <template>
   <div
     id="student-details"
-    class="flex flex-row items-center justify-start py-2 mx-10"
+    class="flex flex-row items-center justify-start py-2 px-10"
   >
     <img
       id="avatar"
-      class="rounded-full border border-gray-400"
+      class="rounded-full"
       :src="student?.avatar"
       :alt="name"
+      width="200px"
+      height="200px"
     />
 
     <div id="details" class="flex flex-col justify-center">
-      <h1 class="text-5xl font-bold ml-10">{{ name }}</h1>
-      <p class="text-4xl text-gray-300 ml-10">
+      <h1 class="font-bold ml-12">{{ name }}</h1>
+      <p class="text-4xl font-medium ml-12">
         {{ `${age} / ${student?.gender}` }}
       </p>
     </div>
@@ -43,15 +45,19 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 img {
   width: 200px;
   height: 200px;
 }
 h1 {
-  color: rgba(0, 0, 0, 0.8);
-  font-weight: 700;
+  color: $titleText;
   font-size: 50px;
   line-height: 82px;
+}
+p {
+  color: $subtitleText;
+  font-size: 35px;
+  line-height: 57px;
 }
 </style>
