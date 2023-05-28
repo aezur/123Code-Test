@@ -1,7 +1,7 @@
 <template>
   <div
     id="student-details"
-    class="flex flex-row items-center justify-start py-2 px-10"
+    class="flex flex-col md:flex-row items-center justify-start py-2 px-10"
   >
     <img
       id="avatar"
@@ -13,8 +13,8 @@
     />
 
     <div id="details" class="flex flex-col justify-center">
-      <h1 class="font-bold ml-12">{{ name }}</h1>
-      <p class="text-4xl font-medium ml-12">
+      <h1 class="font-bold text-center md:text-left md:ml-12">{{ name }}</h1>
+      <p class="text-4xl font-medium text-center md:text-left md:ml-12">
         {{ `${age} / ${student?.gender}` }}
       </p>
     </div>

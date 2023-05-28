@@ -1,22 +1,22 @@
 <template>
-  <div v-if="student" class="grid grid-cols-2 gap-y-2.5">
-    <p class="text-4xl font-bold">Username</p>
-    <p class="text-4xl">{{ student?.username }}</p>
+  <div v-if="student" class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+    <p class="text-3xl md:text-4xl font-bold">Username</p>
+    <p class="text-2xl md:text-4xl mb-10 md:mb-0">{{ student?.username }}</p>
 
-    <p class="text-4xl font-bold">Date of Birth</p>
-    <p class="text-4xl">{{ student?.date_of_birth }}</p>
+    <p class="text-3xl md:text-4xl font-bold">Date of Birth</p>
+    <p class="text-2xl md:text-4xl mb-10 md:mb-0">{{ student?.date_of_birth }}</p>
 
-    <p class="text-4xl font-bold">Phone</p>
-    <p class="text-4xl">{{ student?.phone_number }}</p>
+    <p class="text-3xl md:text-4xl font-bold">Phone</p>
+    <p class="text-2xl md:text-4xl mb-10 md:mb-0">{{ student?.phone_number }}</p>
 
-    <p class="text-4xl font-bold">Email</p>
-    <p class="text-4xl">{{ student?.email }}</p>
+    <p class="text-3xl md:text-4xl font-bold">Email</p>
+    <p class="text-2xl md:text-4xl mb-10 md:mb-0">{{ student?.email }}</p>
 
-    <p class="text-4xl font-bold">Subscription</p>
-    <p class="text-4xl">{{ student?.subscription?.plan }}</p>
+    <p class="text-3xl md:text-4xl font-bold">Subscription</p>
+    <p class="text-2xl md:text-4xl mb-10 md:mb-0">{{ student?.subscription?.plan }}</p>
 
-    <p class="text-4xl font-bold">Location</p>
-    <p class="text-4xl">{{ address }}</p>
+    <p class="text-3xl md:text-4xl font-bold">Location</p>
+    <p class="text-2xl md:text-4xl mb-10 md:mb-0">{{ address }}</p>
   </div>
 </template>
 

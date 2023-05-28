@@ -43,7 +43,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 #personality-card {
-  width: 900px;
+  width: min(900px, 100vw);
   padding: 80px 50px;
   font-family: 'Catamaran', sans-serif;
   border-radius: 50px;
