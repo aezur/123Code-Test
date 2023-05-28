@@ -1,5 +1,5 @@
 import { Commit, Dispatch } from 'vuex';
-import { loremIpsum } from '~/mixins/loremIpsum';
+import { loremIpsum } from '~/helpers/loremIpsum';
 
 export interface State {
   students: Student[];
@@ -28,7 +28,7 @@ export const actions = {
   async fetchStudents({ commit }: { commit: Commit }, count: number = 10) {
     const response = await fetch(`https://random-data-api.com/api/v2/users?size=${count}`);
     const data: Student[] = await response.json();
-    const students = data.map((student: Student) => ({ ...student, description: loremIpsum.methods.generateParagraphs(1) }));
+    const students = data.map((student: Student) => ({ ...student, description: loremIpsum.generateParagraphs(1) }));
     return commit('setStudents', students);
   }
 }
