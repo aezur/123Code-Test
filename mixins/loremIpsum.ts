@@ -2,11 +2,11 @@ import { LoremIpsum } from "lorem-ipsum";
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
-    max: 12,
-    min: 4
+    max: 5,
+    min: 2
   },
   wordsPerSentence: {
-    max: 20,
+    max: 10,
     min: 3
   }
 });
