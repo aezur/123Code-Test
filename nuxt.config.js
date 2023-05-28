@@ -29,7 +29,12 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/style-resources',
   ],
+
+  styleResources: {
+    scss: ['~/assets/scss/*.scss'],
+   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
