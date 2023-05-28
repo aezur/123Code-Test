@@ -17,6 +17,7 @@ declare global {
     address: Address;
     credit_card: CreditCard;
     subscription: Subscription;
+    brands: Brand[];
   }
   export interface Employment {
     title: string;
@@ -43,6 +44,12 @@ declare global {
     status: string;
     payment_method: string;
     term: string;
+  }  
+  export interface Brand {
+    id: number;
+    uid: string;
+    brand: string;
+    equipment: string;
   }  
 }
 
