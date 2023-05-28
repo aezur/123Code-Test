@@ -1,6 +1,5 @@
 <template>
   <div id="personality-card" class="flex flex-col justify-center bg-white">
-
     <user-display id="display" :student="student" />
 
     <div id="description">
@@ -29,18 +28,15 @@
 import Vue from 'vue'
 export default Vue.extend({
   name: 'PersonalityCard',
-  data() {
-    return {
-      student: {} as Student,
-    }
-  },
-  methods: {
-    getRandomStudent() {
-      this.student = this.$store.getters.getRandomStudent()
+  computed: {
+    student() {
+      return this.$store.getters.currentStudent
     },
   },
-  mounted() {
-    this.getRandomStudent()
+  methods: {
+    async getRandomStudent() {
+      await this.$store.dispatch('fetchStudent')
+    },
   },
 })
 </script>

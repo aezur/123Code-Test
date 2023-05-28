@@ -10,31 +10,34 @@ export const state = () => ({
 } as State);
 
 export const getters = {
-  getRandomStudent: (state: State) => (): Student => {
-    return state.students[Math.floor(Math.random() * state.students.length)];
-  },
+  currentStudent(state: State) {
+    return state.students[state.students.length - 1];
+  }
 }
 
 export const mutations = {
-  setStudents(state: State, students: Student[]) {
-    state.students = students;
+  addStudent(state: State, student: Student) {
+    state.students = [ ...state.students, student ];
   }
 }
 
 export const actions = {
-  nuxtServerInit({ dispatch }: { dispatch: Dispatch }) {
-    return dispatch('fetchStudents');
+  async nuxtServerInit({ dispatch }: { dispatch: Dispatch }) {
+    await dispatch('fetchStudent');
   },
-  async fetchStudents({ commit }: { commit: Commit }, count: number = 10) {
-    const usersResponse = await fetch(`https://random-data-api.com/api/v2/users?size=${count}`);
-    const students: Student[] = await usersResponse.json();
-    for (const student of students) {
-      student.description = loremIpsum.generateParagraphs(1);
-      const brandCount = Math.floor(Math.random() * 5) + 1;
-      const brandResponse = await fetch(`https://random-data-api.com/api/v2/appliances?size=${brandCount}`);
-      const brandData: Brand[] = await brandResponse.json();
-      student.brands = brandData;
-    }
-    return commit('setStudents', students);
+  async fetchStudent({ commit }: { commit: Commit }) {
+    const brandCount = Math.floor(Math.random() * 5) + 1;
+    const apiCalls = [
+      fetch(`https://random-data-api.com/api/v2/users`),
+      fetch(`https://random-data-api.com/api/v2/appliances?size=${brandCount}`)
+    ];
+    const [userResponse, brandResponse] = await Promise.all(apiCalls);
+    const json = [userResponse.json(), brandResponse.json()];
+    const [student, brandData] = await Promise.all(json);
+
+    student.description = loremIpsum.generateParagraphs(1);
+    student.brands = brandData?.length ? brandData : [brandData];
+
+    return commit('addStudent', student);
   }
 }
